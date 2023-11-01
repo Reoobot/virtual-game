@@ -23,7 +23,10 @@ function initScene(){
             meteor = document.createElement('a-entity')
             meteor.setAttribute('geometry', {primitive: 'sphere', radius: Math.random() *3 + 0.5})
             meteor.setAttribute('material', {shader: 'flat', src: '#meteor'})
+            meteor.setAttribute('class', 'meteor')
             meteor.object3D.position.set(pos.x, pos.y, pos.z)
+
+            meteor.setAttribute('shootable', '')
 
             orbit.appendChild(meteor)
         
@@ -31,12 +34,15 @@ function initScene(){
     })
 }
 
+var score = 0; 
+
 AFRAME.registerComponent('shootable', {
     init: function () {
-      this.el.addEventListener('click', ()=> {
-        console.log('cazado');
-      })
-    },
-
-
+        this.el.addEventListener('click', () => {
+            score++; 
+            this.el.parentNode.removeChild(this.el)
+            document.querySelector('[text]').setAttribute('value', `${score} meteoritos cazados`);
+            console.log('cazado');
+        });
+    }
 });
