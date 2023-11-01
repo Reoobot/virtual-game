@@ -12,12 +12,16 @@
     <a-scene>
         <a-assets>
             <img src="textures/sky.jpeg" id="sky">
-            <img src="textures/marmol.jpg" id="meteor">
+            <img src="textures/meteor.jpeg" id="meteor">
         </a-assets>
 
         <a-sky src="#sky"></a-sky>
         
-        <a-entity geometry="primitive: sphere; radius:2;" position="0 0 -20" material="color:red"></a-entity>
+        <!-- <a-entity geometry="primitive: sphere; radius:2;" position="0 0 -20" material="shader:flat; src:#meteor" 
+            animation="property: rotation; dur: 3000; to:0 360 0; easing: linear; loop: true;"></a-entity> -->
+
+            <a-entity position="0 3 0" rotation="0 0 0 " class="orbit" 
+            animation="property: rotation; to:0 360 0; loop: true;  dur: 20000; "></a-entity>
     </a-scene>
     
 </body>
